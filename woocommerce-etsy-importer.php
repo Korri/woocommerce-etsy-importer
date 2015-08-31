@@ -10,10 +10,12 @@ Author URI: https://github.com/Korri
 
 if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option('active_plugins')))) {
 
-    function woocommerce_etsyi_submenu_page()
-    {
-        add_submenu_page('woocommerce', 'Etsy Importer', 'Etsy Importer', 'manage_options', 'woocommerce-etsy-importer', 'woocommerce_etsyi_submenu_page_callback');
-    }
+    //require_once(__DIR__ . '/vendor/autoload.php');
+
+    require(__DIR__ . '/classes/woocommerce-esty-importer-class.php');
+
+    new WooCommerce_Esty_Importer();
+
 
     function woocommerce_osc_cartesian_product($a)
     {
@@ -532,6 +534,4 @@ if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_
             <?php
         }
     }
-
-    add_action('admin_menu', 'woocommerce_etsyi_submenu_page', 99);
 }
